@@ -1,19 +1,22 @@
-
 // 导入VueRouter
 // 导入vue----vue3版本以上版本使用这种方式导入
-import {createRouter,createWebHashHistory} from 'vue-router/dist/vue-router.cjs'
-import HomePage from '../views/HomePage.vue'
-
+import {
+  createRouter,
+  createWebHashHistory,
+} from "vue-router/dist/vue-router.cjs";
+import HomePage from "../views/HomePage.vue";
+import IndexPage from "../views/IndexPage.vue";
+import InfoPage from "../views/InfoPage.vue";
 
 const routes = [
-    {  path:"/",component:HomePage}
-]
-
+  { path: "/", component: HomePage },
+  { path: "/index", component: IndexPage },
+  { path: "/info", component: InfoPage },
+];
 
 const router = createRouter({
-    history:createWebHashHistory(),
-    routes:routes,
-})
+  history: createWebHashHistory(),
+  routes: routes,
+});
 
-
-export default router
+export default router;

@@ -1,21 +1,23 @@
 <template>
-  <div class="footer">
-    <div class="foot-on">
-      <text>MSi</text>
-      <div class="line"></div>
-    </div>
-    <div class="foot-down">
-      <text>关于我们</text>
-      <text>用户协议</text><br />
-      <text>隐私政策</text>
-      <text>常见问题</text><br />
-    </div>
-    <div class="foot-end">
-      <text class="join">加入我们</text>
-      <div class="image">
-        <img src="../image/微博.png" />
-        <img src="../image/微信.png" />
-        <img src="../image/信息.png" />
+  <div class="main-footer">
+    <div class="footer">
+      <div class="foot-on">
+        <text>MSi</text>
+        <div class="line"></div>
+      </div>
+      <div class="foot-down">
+        <text>关于我们</text>
+        <text>用户协议</text><br />
+        <text>隐私政策</text>
+        <text>常见问题</text><br />
+      </div>
+      <div class="foot-end">
+        <text class="join">加入我们</text>
+        <div class="image">
+          <img src="../image/微博.png" />
+          <img src="../image/微信.png" />
+          <img src="../image/信息.png" />
+        </div>
       </div>
     </div>
   </div>
@@ -28,12 +30,16 @@ export default {
 </script>
 
 <style scoped>
+.main-footer {
+  background-color: rgb(233, 232, 232);
+  height: 100%;
+}
 .footer {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   width: 80%;
   margin-left: 10%;
-  height: 140px;
+  height: 135px;
 }
 .footer .foot-on text {
   display: flex;
@@ -51,12 +57,15 @@ export default {
   width: 100%;
   border-bottom: 0.5px solid black;
 }
+.foot-end {
+  width: 200px;
+}
 .foot-end .image {
   display: flex;
   float: right;
   height: 30px;
   align-items: center;
-  width: 94.5%;
+  width: 70%;
 }
 .foot-down {
   margin-top: 6px;

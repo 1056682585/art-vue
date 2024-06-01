@@ -1,7 +1,7 @@
 <template>
   <div class="index-common">
-    <v-indexHeader></v-indexHeader>
-    <v-indexMain></v-indexMain>
+    <v-indexHeader @style="handleValue"></v-indexHeader>
+    <v-indexMain :parentData="items"></v-indexMain>
     <v-footer></v-footer>
   </div>
 </template>
@@ -15,6 +15,17 @@ export default {
     vFooter,
     vIndexHeader,
     vIndexMain,
+  },
+  data() {
+    return {
+      items: {},
+    };
+  },
+  methods: {
+    handleValue(item) {
+      this.items = item;
+      console.log(this.items);
+    },
   },
 };
 </script>

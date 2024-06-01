@@ -3,44 +3,77 @@
     <div class="line"></div>
     <span class="v-span">艺术风格</span>
     <div class="div-span">
-      <span>古典主义</span>
-      <span>浪漫主义</span><br />
-      <span>印象主义</span>
-      <span>表现主义</span><br />
-      <span>立体主义</span>
-      <span>抽象主义</span><br />
-      <span>波普主义</span>
-      <span>超现实主义</span><br />
-      <span>极简主义</span>
-      <span>巴洛克</span><br />
-      <span>抽象主义</span>
-      <span>幻想主义</span><br />
-      <span>个人风格</span>
+      <span @click="handleClick($event.target.textContent)">古典主义</span>
+      <span @click="handleClick($event.target.textContent)">浪漫主义</span
+      ><br />
+      <span @click="handleClick($event.target.textContent)">印象主义</span>
+      <span @click="handleClick($event.target.textContent)">表现主义</span
+      ><br />
+      <span @click="handleClick($event.target.textContent)">立体主义</span>
+      <span @click="handleClick($event.target.textContent)">抽象主义</span
+      ><br />
+      <span @click="handleClick($event.target.textContent)">波普主义</span>
+      <span @click="handleClick($event.target.textContent)">超现实主义</span
+      ><br />
+      <span @click="handleClick($event.target.textContent)">极简主义</span>
+      <span @click="handleClick($event.target.textContent)">巴洛克</span><br />
+      <span @click="handleClick($event.target.textContent)">抽象主义</span>
+      <span @click="handleClick($event.target.textContent)">幻想主义</span
+      ><br />
+      <span @click="handleClick($event.target.textContent)">个人风格</span>
     </div>
     <span class="v-span-two">艺术媒介</span>
     <div class="div-span-two">
-      <span>插画</span>
-      <span>水墨画</span><br />
-      <span>素描</span>
-      <span>油画</span><br />
-      <span>摄影</span>
+      <span @click="handleClick($event.target.textContent)">插画</span>
+      <span @click="handleClick($event.target.textContent)">水墨画</span><br />
+      <span @click="handleClick($event.target.textContent)">素描</span>
+      <span @click="handleClick($event.target.textContent)">油画</span><br />
+      <span @click="handleClick($event.target.textContent)">摄影</span>
     </div>
     <span class="v-span-three">地区</span>
     <div class="div-span-three">
-      <span>美国</span>
-      <span>德国</span><br />
-      <span>法国</span>
-      <span>俄罗斯</span><br />
-      <span>英国</span>
-      <span>苏格兰</span><br />
-      <span>意大利</span>
+      <span @click="handleClick($event.target.textContent)">美国</span>
+      <span @click="handleClick($event.target.textContent)">德国</span><br />
+      <span @click="handleClick($event.target.textContent)">法国</span>
+      <span @click="handleClick($event.target.textContent)">俄罗斯</span><br />
+      <span @click="handleClick($event.target.textContent)">英国</span>
+      <span @click="handleClick($event.target.textContent)">苏格兰</span><br />
+      <span @click="handleClick($event.target.textContent)">意大利</span>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "vAside",
+  // props: ["style"],
+  data() {
+    return {
+      style: "",
+    };
+  },
+  methods: {
+    handleClick(text) {
+      console.log("你点击了" + text);
+      // console.log("传过来" + this.handleValue);
+      axios
+        .get("http://101.37.124.37:8090/like", {
+          params: {
+            like: text,
+          },
+        })
+        .then((response) => {
+          this.items = response.data;
+          console.log(this.items);
+          this.$emit("style", this.items);
+        })
+        .catch((error) => {
+          console.error("请求出错" + error);
+        });
+      console.log(this.items);
+    },
+  },
 };
 </script>
 
@@ -55,7 +88,7 @@ export default {
 }
 .aside .line {
   float: right;
-  height: 100%;
+  height: 550px;
   width: 1px;
   background-color: black;
 }

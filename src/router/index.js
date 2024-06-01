@@ -9,9 +9,9 @@ import IndexPage from "../views/IndexPage.vue";
 import InfoPage from "../views/InfoPage.vue";
 
 const routes = [
-  { path: "/", component: HomePage },
-  { path: "/index", component: IndexPage },
-  { path: "/info", component: InfoPage },
+  { path: "/", component: HomePage, meta: { noCache: true } },
+  { path: "/index", component: IndexPage, name: "index" },
+  { path: "/info", component: InfoPage, name: "info" },
 ];
 
 const router = createRouter({

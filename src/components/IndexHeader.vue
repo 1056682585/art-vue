@@ -5,7 +5,13 @@
       <text class="logo-text2">Mjdjoutney Style index</text>
     </div>
     <div class="e-input">
-      <el-input class="input" prefix-icon="Search" size="large" />
+      <el-input
+        class="input"
+        prefix-icon="Search"
+        :disabled="false"
+        @keyup.enter="gotoSelect(inputValue)"
+        v-model="inputValue"
+      />
     </div>
     <div class="right">
       <text class="right-logo">搜索你想要的艺术风格</text>
@@ -14,8 +20,35 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "vHeader",
+  data() {
+    return {
+      inputValue: "",
+      items: {},
+    };
+  },
+  methods: {
+    gotoSelect(value) {
+      // this.$router.go(0);
+      console.log(value);
+      axios
+        .get("http://101.37.124.37:8090/name", {
+          params: {
+            name: value,
+          },
+        })
+        .then((response) => {
+          this.items = response.data;
+          console.log(this.items);
+          this.$emit("style", this.items);
+        })
+        .catch((error) => {
+          console.error("请求出错" + error);
+        });
+    },
+  },
 };
 </script>
 

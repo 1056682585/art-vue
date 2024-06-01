@@ -6,7 +6,10 @@ import ElementPlus from "element-plus";
 import router from "./router";
 import * as ElementPlusIconsVue from "@element-plus/icons-vue";
 
+const bus = createApp(App);
 const app = createApp(App);
+
+app.provide("eventBus", bus);
 app.use(ElementPlus);
 app.use(router);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

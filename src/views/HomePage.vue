@@ -40,6 +40,6 @@ export default {
 
 <style scoped>
 .common-layout {
-  height: 100%;
+  height: auto;
 }
 </style>
